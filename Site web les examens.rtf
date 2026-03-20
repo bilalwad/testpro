@@ -1,0 +1,1030 @@
+{\rtf1\fbidis\ansi\ansicpg1252\deff0\nouicompat\deflang1036{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Calibri;}{\f2\fnil\fcharset1 Segoe UI Symbol;}{\f3\fnil\fcharset1 Segoe UI Symbol;}{\f4\fnil\fcharset1 Segoe UI Emoji;}{\f5\fnil\fcharset1 Cambria Math;}}
+{\*\generator Riched20 10.0.19041}{\*\mmathPr\mmathFont5\mwrapIndent1440 }\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang12 <!DOCTYPE html>\par
+<html lang="fr">\par
+<head>\par
+<meta charset="UTF-8">\par
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\par
+<title>TestPro \f1\emdash  Certifications en Ligne</title>\par
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">\par
+<style>\par
+  :root \{\par
+    --navy: #0a1628;\par
+    --navy-mid: #132040;\par
+    --gold: #c9a84c;\par
+    --gold-light: #e8c97a;\par
+    --cream: #f8f4ec;\par
+    --white: #ffffff;\par
+    --text: #1a2035;\par
+    --muted: #7a8099;\par
+    --success: #1a8f5c;\par
+    --border: #e2ddd4;\par
+    --shadow: 0 4px 32px rgba(10,22,40,0.10);\par
+  \}\par
+  * \{ box-sizing: border-box; margin: 0; padding: 0; \}\par
+  body \{ font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; \}\par
+\par
+  /* ===== SCREENS ===== */\par
+  .screen \{ display: none; min-height: 100vh; \}\par
+  .screen.active \{ display: flex; flex-direction: column; \}\par
+\par
+  /* ===== NAV ===== */\par
+  nav \{\par
+    background: var(--navy);\par
+    padding: 0 2.5rem;\par
+    height: 64px;\par
+    display: flex;\par
+    align-items: center;\par
+    justify-content: space-between;\par
+    position: sticky; top: 0; z-index: 100;\par
+  \}\par
+  .logo \{ font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.4rem; letter-spacing: 1px; \}\par
+  .logo span \{ color: var(--white); \}\par
+  .nav-links \{ display: flex; gap: 2rem; \}\par
+  .nav-links a \{ color: rgba(255,255,255,0.65); font-size: 0.88rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: color .2s; \}\par
+  .nav-links a:hover \{ color: var(--gold); \}\par
+\par
+  /* ===== HERO ===== */\par
+  .hero \{\par
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a2f5a 100%);\par
+    padding: 5rem 2.5rem 4rem;\par
+    display: flex;\par
+    align-items: center;\par
+    justify-content: center;\par
+    text-align: center;\par
+    position: relative;\par
+    overflow: hidden;\par
+  \}\par
+  .hero::before \{\par
+    content: '';\par
+    position: absolute;\par
+    inset: 0;\par
+    background: radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.12) 0%, transparent 60%);\par
+    pointer-events: none;\par
+  \}\par
+  .hero-inner \{ max-width: 680px; position: relative; \}\par
+  .hero-badge \{\par
+    display: inline-flex; align-items: center; gap: 6px;\par
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);\par
+    color: var(--gold-light); font-size: 0.78rem; font-weight: 600;\par
+    letter-spacing: 1.5px; text-transform: uppercase;\par
+    padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem;\par
+  \}\par
+  .hero h1 \{\par
+    font-family: 'Playfair Display', serif;\par
+    color: var(--white);\par
+    font-size: clamp(2.2rem, 5vw, 3.4rem);\par
+    line-height: 1.18;\par
+    margin-bottom: 1.2rem;\par
+  \}\par
+  .hero h1 em \{ color: var(--gold); font-style: normal; \}\par
+  .hero p \{ color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2.4rem; \}\par
+  .btn-primary \{\par
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);\par
+    color: var(--navy);\par
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.5px;\par
+    padding: 13px 34px; border-radius: 6px;\par
+    border: none; cursor: pointer;\par
+    box-shadow: 0 4px 20px rgba(201,168,76,0.35);\par
+    transition: transform .2s, box-shadow .2s;\par
+  \}\par
+  .btn-primary:hover \{ transform: translateY(-2px); box-shadow: 0 6px 28px rgba(201,168,76,0.45); \}\par
+  .btn-secondary \{\par
+    background: transparent;\par
+    color: var(--white);\par
+    border: 1.5px solid rgba(255,255,255,0.35);\par
+    font-weight: 500; font-size: 0.9rem;\par
+    padding: 12px 28px; border-radius: 6px;\par
+    cursor: pointer; margin-left: 12px;\par
+    transition: border-color .2s, background .2s;\par
+  \}\par
+  .btn-secondary:hover \{ border-color: var(--gold); background: rgba(201,168,76,0.08); \}\par
+\par
+  /* ===== STATS BAR ===== */\par
+  .stats-bar \{\par
+    background: var(--white);\par
+    border-bottom: 1px solid var(--border);\par
+    display: flex; justify-content: center; gap: 4rem;\par
+    padding: 1.4rem 2rem;\par
+    flex-wrap: wrap;\par
+  \}\par
+  .stat \{ text-align: center; \}\par
+  .stat-num \{ font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--navy); font-weight: 700; \}\par
+  .stat-label \{ font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-top: 2px; \}\par
+\par
+  /* ===== CATALOG ===== */\par
+  .catalog \{ padding: 3.5rem 2.5rem; max-width: 1100px; margin: 0 auto; width: 100%; \}\par
+  .section-title \{\par
+    font-family: 'Playfair Display', serif;\par
+    font-size: 1.7rem; color: var(--navy);\par
+    margin-bottom: 0.5rem;\par
+  \}\par
+  .section-sub \{ color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; \}\par
+  .test-grid \{ display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; \}\par
+  .test-card \{\par
+    background: var(--white);\par
+    border: 1px solid var(--border);\par
+    border-radius: 12px;\par
+    padding: 1.6rem;\par
+    cursor: pointer;\par
+    transition: box-shadow .25s, transform .25s, border-color .25s;\par
+    position: relative;\par
+    overflow: hidden;\par
+  \}\par
+  .test-card::before \{\par
+    content: '';\par
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;\par
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));\par
+    transform: scaleX(0); transform-origin: left;\par
+    transition: transform .3s;\par
+  \}\par
+  .test-card:hover \{ box-shadow: var(--shadow); transform: translateY(-3px); border-color: rgba(201,168,76,0.4); \}\par
+  .test-card:hover::before \{ transform: scaleX(1); \}\par
+  .card-icon \{ font-size: 2rem; margin-bottom: 0.8rem; \}\par
+  .card-category \{ font-size: 0.72rem; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; \}\par
+  .card-title \{ font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 0.5rem; \}\par
+  .card-desc \{ font-size: 0.84rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.2rem; \}\par
+  .card-meta \{ display: flex; gap: 1rem; font-size: 0.78rem; color: var(--muted); align-items: center; \}\par
+  .card-meta span \{ display: flex; align-items: center; gap: 4px; \}\par
+  .card-price \{\par
+    position: absolute; top: 1.2rem; right: 1.2rem;\par
+    background: var(--navy); color: var(--gold);\par
+    font-weight: 700; font-size: 0.85rem;\par
+    padding: 3px 10px; border-radius: 100px;\par
+  \}\par
+  .badge-free \{ background: #e8f5ee; color: var(--success); \}\par
+\par
+  /* ===== TEST SCREEN ===== */\par
+  .test-layout \{ display: flex; gap: 0; flex: 1; \}\par
+  .test-sidebar \{\par
+    width: 300px; min-height: 100%;\par
+    background: var(--navy);\par
+    padding: 2rem 1.6rem;\par
+    flex-shrink: 0;\par
+  \}\par
+  .test-main \{ flex: 1; padding: 2.5rem; overflow-y: auto; \}\par
+  .test-header \{ margin-bottom: 2rem; \}\par
+  .test-title \{ font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 0.3rem; \}\par
+  .test-sub \{ color: var(--muted); font-size: 0.88rem; \}\par
+  .progress-wrap \{ margin-bottom: 1.4rem; \}\par
+  .progress-label \{ display: flex; justify-content: space-between; font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 6px; \}\par
+  .progress-bar \{ height: 6px; background: rgba(255,255,255,0.12); border-radius: 100px; overflow: hidden; \}\par
+  .progress-fill \{ height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 100px; transition: width .4s; \}\par
+  .q-dots \{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.5rem; \}\par
+  .q-dot \{\par
+    width: 28px; height: 28px;\par
+    border-radius: 6px; font-size: 0.72rem; font-weight: 600;\par
+    display: flex; align-items: center; justify-content: center;\par
+    cursor: pointer; transition: background .2s;\par
+    background: rgba(255,255,255,0.08);\par
+    color: rgba(255,255,255,0.55);\par
+  \}\par
+  .q-dot.answered \{ background: rgba(201,168,76,0.25); color: var(--gold); \}\par
+  .q-dot.current \{ background: var(--gold); color: var(--navy); \}\par
+  .timer-wrap \{\par
+    margin-top: 2rem;\par
+    background: rgba(255,255,255,0.06);\par
+    border-radius: 10px; padding: 1.2rem;\par
+    text-align: center;\par
+  \}\par
+  .timer-label \{ font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; \}\par
+  .timer-val \{ font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); \}\par
+  .timer-val.warning \{ color: #ff6b6b; \}\par
+\par
+  /* Question */\par
+  .question-card \{\par
+    background: var(--white);\par
+    border: 1px solid var(--border);\par
+    border-radius: 14px;\par
+    padding: 2.2rem;\par
+    margin-bottom: 1.4rem;\par
+    box-shadow: var(--shadow);\par
+  \}\par
+  .q-num \{ font-size: 0.78rem; font-weight: 600; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.6rem; \}\par
+  .q-text \{ font-size: 1.05rem; color: var(--navy); line-height: 1.65; margin-bottom: 1.8rem; font-weight: 500; \}\par
+  .options \{ display: flex; flex-direction: column; gap: 0.7rem; \}\par
+  .option \{\par
+    display: flex; align-items: center; gap: 12px;\par
+    padding: 13px 16px;\par
+    border: 1.5px solid var(--border);\par
+    border-radius: 8px; cursor: pointer;\par
+    transition: border-color .2s, background .2s;\par
+    font-size: 0.9rem; color: var(--text);\par
+  \}\par
+  .option:hover \{ border-color: var(--gold); background: rgba(201,168,76,0.05); \}\par
+  .option.selected \{ border-color: var(--gold); background: rgba(201,168,76,0.1); color: var(--navy); font-weight: 500; \}\par
+  .option-letter \{\par
+    width: 28px; height: 28px; border-radius: 6px;\par
+    display: flex; align-items: center; justify-content: center;\par
+    font-size: 0.78rem; font-weight: 700;\par
+    background: var(--border); color: var(--muted);\par
+    flex-shrink: 0; transition: background .2s, color .2s;\par
+  \}\par
+  .option.selected .option-letter \{ background: var(--gold); color: var(--navy); \}\par
+  .nav-btns \{ display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; \}\par
+  .btn-nav \{\par
+    background: var(--white); border: 1.5px solid var(--border);\par
+    color: var(--text); padding: 10px 22px; border-radius: 6px;\par
+    font-weight: 500; font-size: 0.88rem; cursor: pointer;\par
+    transition: border-color .2s, background .2s;\par
+  \}\par
+  .btn-nav:hover \{ border-color: var(--navy); background: var(--cream); \}\par
+  .btn-submit \{\par
+    background: linear-gradient(135deg, var(--navy), #1a2f5a);\par
+    color: var(--white); border: none;\par
+    padding: 11px 28px; border-radius: 6px;\par
+    font-weight: 600; font-size: 0.9rem; cursor: pointer;\par
+    transition: opacity .2s;\par
+  \}\par
+  .btn-submit:hover \{ opacity: 0.9; \}\par
+\par
+  /* ===== RESULTS ===== */\par
+  .results-wrap \{ max-width: 780px; margin: 0 auto; padding: 3rem 2rem; \}\par
+  .score-card \{\par
+    background: var(--navy);\par
+    border-radius: 16px;\par
+    padding: 2.5rem;\par
+    text-align: center;\par
+    color: var(--white);\par
+    margin-bottom: 1.8rem;\par
+    position: relative; overflow: hidden;\par
+  \}\par
+  .score-card::before \{\par
+    content: '';\par
+    position: absolute; inset: 0;\par
+    background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.2), transparent 60%);\par
+    pointer-events: none;\par
+  \}\par
+  .score-pct \{\par
+    font-family: 'Playfair Display', serif;\par
+    font-size: 4.5rem; color: var(--gold);\par
+    line-height: 1; margin-bottom: 0.3rem;\par
+  \}\par
+  .score-pct span \{ font-size: 2rem; \}\par
+  .score-status \{ font-size: 1.2rem; font-weight: 600; margin-bottom: 0.4rem; \}\par
+  .score-msg \{ font-size: 0.88rem; color: rgba(255,255,255,0.6); \}\par
+  .result-stats \{\par
+    display: flex; justify-content: center; gap: 3rem;\par
+    margin-top: 1.8rem; flex-wrap: wrap;\par
+  \}\par
+  .r-stat \{ text-align: center; \}\par
+  .r-stat-num \{ font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); \}\par
+  .r-stat-label \{ font-size: 0.75rem; color: rgba(255,255,255,0.5); \}\par
+\par
+  .cert-promo \{\par
+    background: var(--white);\par
+    border: 1px solid var(--border);\par
+    border-radius: 14px;\par
+    padding: 2rem;\par
+    display: flex; align-items: center; gap: 2rem;\par
+    margin-bottom: 1.4rem;\par
+    box-shadow: var(--shadow);\par
+  \}\par
+  .cert-icon \{ font-size: 3.5rem; flex-shrink: 0; \}\par
+  .cert-text h3 \{ font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 0.4rem; \}\par
+  .cert-text p \{ font-size: 0.86rem; color: var(--muted); line-height: 1.55; \}\par
+  .cert-actions \{ display: flex; gap: 0.8rem; margin-top: 1rem; \}\par
+  .btn-cert \{\par
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));\par
+    color: var(--navy); font-weight: 700; font-size: 0.88rem;\par
+    padding: 10px 22px; border-radius: 6px; border: none; cursor: pointer;\par
+    transition: transform .2s;\par
+  \}\par
+  .btn-cert:hover \{ transform: translateY(-1px); \}\par
+  .btn-outline \{\par
+    background: transparent; border: 1.5px solid var(--border);\par
+    color: var(--text); font-size: 0.88rem; font-weight: 500;\par
+    padding: 10px 20px; border-radius: 6px; cursor: pointer;\par
+    transition: border-color .2s;\par
+  \}\par
+  .btn-outline:hover \{ border-color: var(--navy); \}\par
+\par
+  /* Answers review */\par
+  .answers-review \{ background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.8rem; \}\par
+  .review-title \{ font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 1.2rem; \}\par
+  .review-item \{ padding: 0.9rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 12px; align-items: flex-start; \}\par
+  .review-item:last-child \{ border-bottom: none; \}\par
+  .review-icon \{ font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; \}\par
+  .review-q \{ font-size: 0.88rem; color: var(--text); line-height: 1.5; \}\par
+  .review-ans \{ font-size: 0.8rem; margin-top: 4px; color: var(--muted); \}\par
+  .correct-ans \{ color: var(--success); font-weight: 600; \}\par
+  .wrong-ans \{ color: #e05252; \}\par
+\par
+  /* ===== CERTIFICATE ===== */\par
+  .cert-screen \{ background: #f0ece3; \}\par
+  .cert-wrap \{ max-width: 820px; margin: 2.5rem auto; padding: 0 1.5rem; \}\par
+  .cert-doc \{\par
+    background: var(--white);\par
+    border: 1px solid #d4cfc5;\par
+    border-radius: 4px;\par
+    padding: 4rem;\par
+    text-align: center;\par
+    position: relative;\par
+    box-shadow: 0 8px 48px rgba(0,0,0,0.12);\par
+  \}\par
+  .cert-doc::before, .cert-doc::after \{\par
+    content: '';\par
+    position: absolute;\par
+    top: 16px; left: 16px; right: 16px; bottom: 16px;\par
+    border: 1.5px solid var(--gold);\par
+    border-radius: 2px;\par
+    pointer-events: none;\par
+  \}\par
+  .cert-doc::after \{\par
+    top: 22px; left: 22px; right: 22px; bottom: 22px;\par
+    border-color: rgba(201,168,76,0.35);\par
+  \}\par
+  .cert-logo \{ font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--navy); letter-spacing: 2px; margin-bottom: 0.4rem; \}\par
+  .cert-logo-sub \{ font-size: 0.72rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; \}\par
+  .cert-divider \{\par
+    width: 80px; height: 2px;\par
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);\par
+    margin: 1.2rem auto;\par
+  \}\par
+  .cert-headline \{ font-family: 'Playfair Display', serif; font-size: 0.8rem; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.6rem; \}\par
+  .cert-name \{ font-family: 'Playfair Display', serif; font-size: 2.6rem; color: var(--navy); font-style: italic; margin-bottom: 0.4rem; \}\par
+  .cert-body \{ font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.5rem; \}\par
+  .cert-test \{ font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); margin: 0.6rem 0; \}\par
+  .cert-score-badge \{\par
+    display: inline-flex; align-items: center; justify-content: center;\par
+    width: 80px; height: 80px; border-radius: 50%;\par
+    border: 2px solid var(--gold);\par
+    font-family: 'Playfair Display', serif;\par
+    font-size: 1.5rem; color: var(--navy);\par
+    margin: 1rem auto;\par
+  \}\par
+  .cert-footer \{ display: flex; justify-content: space-between; align-items: flex-end; margin-top: 2.5rem; \}\par
+  .cert-sig \{ text-align: left; \}\par
+  .cert-sig-name \{ font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); font-style: italic; \}\par
+  .cert-sig-title \{ font-size: 0.72rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 6px; margin-top: 4px; \}\par
+  .cert-id \{ text-align: right; font-size: 0.7rem; color: var(--muted); \}\par
+  .cert-actions-bar \{\par
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;\par
+    margin-top: 2rem; margin-bottom: 3rem;\par
+  \}\par
+\par
+  /* ===== PAYMENT ===== */\par
+  .payment-wrap \{ max-width: 560px; margin: 3rem auto; padding: 0 1.5rem; \}\par
+  .payment-card \{\par
+    background: var(--white);\par
+    border: 1px solid var(--border);\par
+    border-radius: 16px;\par
+    overflow: hidden;\par
+    box-shadow: var(--shadow);\par
+  \}\par
+  .payment-header \{\par
+    background: var(--navy);\par
+    padding: 1.8rem 2rem;\par
+    display: flex; align-items: center; gap: 1rem;\par
+  \}\par
+  .payment-header-text h3 \{ color: var(--white); font-family: 'Playfair Display', serif; font-size: 1.2rem; \}\par
+  .payment-header-text p \{ color: rgba(255,255,255,0.6); font-size: 0.83rem; margin-top: 2px; \}\par
+  .price-badge \{\par
+    margin-left: auto;\par
+    background: rgba(201,168,76,0.2);\par
+    color: var(--gold-light);\par
+    font-family: 'Playfair Display', serif;\par
+    font-size: 1.4rem;\par
+    padding: 6px 16px; border-radius: 8px;\par
+  \}\par
+  .payment-body \{ padding: 2rem; \}\par
+  .form-row \{ display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; \}\par
+  .form-group \{ margin-bottom: 1.2rem; \}\par
+  .form-label \{ display: block; font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 5px; \}\par
+  .form-input \{\par
+    width: 100%; padding: 10px 14px;\par
+    border: 1.5px solid var(--border);\par
+    border-radius: 7px; font-family: 'DM Sans', sans-serif;\par
+    font-size: 0.9rem; color: var(--text);\par
+    background: var(--cream);\par
+    transition: border-color .2s, box-shadow .2s;\par
+    outline: none;\par
+  \}\par
+  .form-input:focus \{ border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.12); \}\par
+  .card-icons \{ display: flex; gap: 6px; margin-bottom: 1rem; \}\par
+  .card-icon-badge \{\par
+    background: var(--cream); border: 1px solid var(--border);\par
+    border-radius: 4px; padding: 3px 8px;\par
+    font-size: 0.7rem; font-weight: 700; color: var(--muted);\par
+  \}\par
+  .secure-badge \{\par
+    display: flex; align-items: center; gap: 8px;\par
+    background: #e8f5ee; border-radius: 6px; padding: 8px 12px;\par
+    font-size: 0.78rem; color: var(--success); margin-bottom: 1.4rem;\par
+  \}\par
+  .summary-line \{ display: flex; justify-content: space-between; font-size: 0.88rem; color: var(--muted); padding: 5px 0; \}\par
+  .summary-line.total \{ font-weight: 700; color: var(--navy); font-size: 1rem; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 4px; \}\par
+  .btn-pay \{\par
+    width: 100%;\par
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));\par
+    color: var(--navy); font-weight: 700; font-size: 1rem;\par
+    padding: 14px; border-radius: 8px; border: none; cursor: pointer;\par
+    box-shadow: 0 4px 20px rgba(201,168,76,0.35);\par
+    margin-top: 1.4rem; transition: transform .2s;\par
+  \}\par
+  .btn-pay:hover \{ transform: translateY(-2px); \}\par
+\par
+  /* ===== SUCCESS MODAL ===== */\par
+  .modal-overlay \{\par
+    display: none; position: fixed; inset: 0;\par
+    background: rgba(10,22,40,0.7); z-index: 200;\par
+    align-items: center; justify-content: center;\par
+  \}\par
+  .modal-overlay.active \{ display: flex; \}\par
+  .modal \{\par
+    background: var(--white); border-radius: 16px;\par
+    padding: 2.5rem; max-width: 400px; width: 90%;\par
+    text-align: center; animation: popIn .3s ease;\par
+  \}\par
+  @keyframes popIn \{ from \{ transform: scale(.9); opacity: 0; \} to \{ transform: scale(1); opacity: 1; \} \}\par
+  .modal-icon \{ font-size: 3.5rem; margin-bottom: 1rem; \}\par
+  .modal h3 \{ font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 0.5rem; \}\par
+  .modal p \{ color: var(--muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.5rem; \}\par
+\par
+  /* ===== RESPONSIVE ===== */\par
+  @media (max-width: 768px) \{\par
+    .test-layout \{ flex-direction: column; \}\par
+    .test-sidebar \{ width: 100%; min-height: auto; \}\par
+    .cert-promo \{ flex-direction: column; \}\par
+    nav \{ padding: 0 1rem; \}\par
+    .catalog \{ padding: 2rem 1rem; \}\par
+    .hero \{ padding: 3rem 1.2rem; \}\par
+    .cert-doc \{ padding: 2.5rem 1.5rem; \}\par
+    .cert-footer \{ flex-direction: column; gap: 1rem; text-align: center; \}\par
+    .cert-sig \{ text-align: center; \}\par
+    .form-row \{ grid-template-columns: 1fr; \}\par
+  \}\par
+</style>\par
+</head>\par
+<body>\par
+\par
+<!-- ==================== HOME ==================== -->\par
+<div id="screen-home" class="screen active">\par
+  <nav>\par
+    <div class="logo">Test<span>Pro</span></div>\par
+    <div class="nav-links">\par
+      <a onclick="showScreen('screen-home')">Accueil</a>\par
+      <a onclick="showScreen('screen-home')">Catalogue</a>\par
+      <a onclick="showScreen('screen-home')">Certifications</a>\par
+    </div>\par
+  </nav>\par
+  <div class="hero">\par
+    <div class="hero-inner">\par
+      <div class="hero-badge">\f2\u10022?\f1  \f0 Plateforme Certifiante</div>\par
+      <h1>Validez vos <em>comp\'e9tences</em> avec un certificat reconnu</h1>\par
+      <p>Des examens professionnels en ligne avec r\'e9sultats imm\'e9diats, correction d\'e9taill\'e9e et certificat officiel t\'e9l\'e9chargeable.</p>\par
+      <button class="btn-primary" onclick="scrollToCatalog()">Voir les examens</button>\par
+      <button class="btn-secondary" onclick="startDemo()">D\'e9mo gratuite</button>\par
+    </div>\par
+  </div>\par
+  <div class="stats-bar">\par
+    <div class="stat"><div class="stat-num">12 400+</div><div class="stat-label">Certifi\'e9s</div></div>\par
+    <div class="stat"><div class="stat-num">48</div><div class="stat-label">Examens disponibles</div></div>\par
+    <div class="stat"><div class="stat-num">97%</div><div class="stat-label">Satisfaction</div></div>\par
+    <div class="stat"><div class="stat-num">< 5 min</div><div class="stat-label">R\'e9sultats instantan\'e9s</div></div>\par
+  </div>\par
+  <div class="catalog" id="catalog">\par
+    <h2 class="section-title">Catalogue des examens</h2>\par
+    <p class="section-sub">Choisissez votre domaine et commencez imm\'e9diatement</p>\par
+    <div class="test-grid">\par
+      <div class="test-card" onclick="startTest('JavaScript ES6+','D\'e9veloppement Web','\f2\u9889?\f0 ',39)">\par
+        <div class="card-price">39 CHF</div>\par
+        <div class="card-icon">\f2\u9889?\f0 </div>\par
+        <div class="card-category">D\'e9veloppement Web</div>\par
+        <div class="card-title">JavaScript ES6+</div>\par
+        <div class="card-desc">Ma\'eetrisez les concepts avanc\'e9s : promesses, modules, classes et fonctions asynchrones.</div>\par
+        <div class="card-meta">\par
+          <span>\f2\u9201?\f1  \f0 45 min</span>\par
+          <span>\f3\u-10179?\u-8995?\f1  \f0 30 questions</span>\par
+          <span>\f2\u11088?\f1  \f0 4.8</span>\par
+        </div>\par
+      </div>\par
+      <div class="test-card" onclick="startTest('Gestion de Projet','Management','\f3\u-10179?\u-9014?\f0 ',49)">\par
+        <div class="card-price">49 CHF</div>\par
+        <div class="card-icon">\f3\u-10179?\u-9014?\f0 </div>\par
+        <div class="card-category">Management</div>\par
+        <div class="card-title">Gestion de Projet PMP</div>\par
+        <div class="card-desc">Pr\'e9parez-vous aux m\'e9thodes Agile, Scrum et aux fondamentaux du management de projet.</div>\par
+        <div class="card-meta">\par
+          <span>\f2\u9201?\f1  \f0 60 min</span>\par
+          <span>\f3\u-10179?\u-8995?\f1  \f0 40 questions</span>\par
+          <span>\f2\u11088?\f1  \f0 4.9</span>\par
+        </div>\par
+      </div>\par
+      <div class="test-card" onclick="startTest('Culture G\'e9n\'e9rale','\'c9valuation','\f3\u-10180?\u-8301?\f0 ',0)">\par
+        <div class="card-price badge-free" style="background:#e8f5ee;color:#1a8f5c;">Gratuit</div>\par
+        <div class="card-icon">\f3\u-10180?\u-8301?\f0 </div>\par
+        <div class="card-category">\'c9valuation</div>\par
+        <div class="card-title">Culture G\'e9n\'e9rale</div>\par
+        <div class="card-desc">Testez vos connaissances g\'e9n\'e9rales sur des sujets vari\'e9s. Acc\'e8s libre pour tous.</div>\par
+        <div class="card-meta">\par
+          <span>\f2\u9201?\f1  \f0 20 min</span>\par
+          <span>\f3\u-10179?\u-8995?\f1  \f0 20 questions</span>\par
+          <span>\f2\u11088?\f1  \f0 4.6</span>\par
+        </div>\par
+      </div>\par
+      <div class="test-card" onclick="startTest('SQL & Bases de Donn\'e9es','Data','\f4\u-10179?\u-8764?\u-497?\f0 ',44)">\par
+        <div class="card-price">44 CHF</div>\par
+        <div class="card-icon">\f4\u-10179?\u-8764?\u-497?\f0 </div>\par
+        <div class="card-category">Data</div>\par
+        <div class="card-title">SQL & Bases de Donn\'e9es</div>\par
+        <div class="card-desc">Requ\'eates avanc\'e9es, jointures, indexation et optimisation de bases relationnelles.</div>\par
+        <div class="card-meta">\par
+          <span>\f2\u9201?\f1  \f0 50 min</span>\par
+          <span>\f3\u-10179?\u-8995?\f1  \f0 35 questions</span>\par
+          <span>\f2\u11088?\f1  \f0 4.7</span>\par
+        </div>\par
+      </div>\par
+      <div class="test-card" onclick="startTest('Marketing Digital','Marketing','\f3\u-10179?\u-8975?\f0 ',39)">\par
+        <div class="card-price">39 CHF</div>\par
+        <div class="card-icon">\f3\u-10179?\u-8975?\f0 </div>\par
+        <div class="card-category">Marketing</div>\par
+        <div class="card-title">Marketing Digital</div>\par
+        <div class="card-desc">SEO, r\'e9seaux sociaux, analytics et strat\'e9gies de contenu pour l'\'e8re num\'e9rique.</div>\par
+        <div class="card-meta">\par
+          <span>\f2\u9201?\f1  \f0 40 min</span>\par
+          <span>\f3\u-10179?\u-8995?\f1  \f0 30 questions</span>\par
+          <span>\f2\u11088?\f1  \f0 4.7</span>\par
+        </div>\par
+      </div>\par
+      <div class="test-card" onclick="startTest('Cybers\'e9curit\'e9','IT','\f3\u-10179?\u-8944?\f0 ',59)">\par
+        <div class="card-price">59 CHF</div>\par
+        <div class="card-icon">\f3\u-10179?\u-8944?\f0 </div>\par
+        <div class="card-category">IT</div>\par
+        <div class="card-title">Cybers\'e9curit\'e9 Fondamentaux</div>\par
+        <div class="card-desc">S\'e9curit\'e9 r\'e9seau, cryptographie, gestion des vuln\'e9rabilit\'e9s et bonnes pratiques.</div>\par
+        <div class="card-meta">\par
+          <span>\f2\u9201?\f1  \f0 70 min</span>\par
+          <span>\f3\u-10179?\u-8995?\f1  \f0 45 questions</span>\par
+          <span>\f2\u11088?\f1  \f0 4.9</span>\par
+        </div>\par
+      </div>\par
+    </div>\par
+  </div>\par
+</div>\par
+\par
+<!-- ==================== PAYMENT ==================== -->\par
+<div id="screen-payment" class="screen">\par
+  <nav>\par
+    <div class="logo">Test<span>Pro</span></div>\par
+    <div class="nav-links">\par
+      <a onclick="showScreen('screen-home')">\f5\u8592?\f1  \f0 Retour</a>\par
+    </div>\par
+  </nav>\par
+  <div style="flex:1; background: var(--cream);">\par
+    <div class="payment-wrap">\par
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--navy);margin-bottom:0.3rem;padding:2rem 0 0;">Acc\'e8s \'e0 l'examen</h2>\par
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1.5rem;">Paiement s\'e9curis\'e9 \f1\emdash  acc\f0\'e8s imm\'e9diat apr\'e8s confirmation</p>\par
+      <div class="payment-card">\par
+        <div class="payment-header">\par
+          <div style="font-size:2rem;" id="pay-icon">\f2\u9889?\f0 </div>\par
+          <div class="payment-header-text">\par
+            <h3 id="pay-title">JavaScript ES6+</h3>\par
+            <p id="pay-cat">D\'e9veloppement Web \f1\bullet  30 questions \bullet  45 min</p>\par
+          </div>\par
+          <div class="price-badge" id="pay-price">39 CHF</div>\par
+        </div>\par
+        <div class="payment-body">\par
+          <div class="secure-badge">\f3\u-10179?\u-8942?\f1  \f0 Paiement 100% s\'e9curis\'e9 par chiffrement SSL</div>\par
+          <div class="card-icons">\par
+            <div class="card-icon-badge">VISA</div>\par
+            <div class="card-icon-badge">MC</div>\par
+            <div class="card-icon-badge">AMEX</div>\par
+            <div class="card-icon-badge">TWINT</div>\par
+          </div>\par
+          <div class="form-group">\par
+            <label class="form-label">Nom complet</label>\par
+            <input id="pay-name" class="form-input" type="text" placeholder="Marie Dupont">\par
+          </div>\par
+          <div class="form-group">\par
+            <label class="form-label">Email</label>\par
+            <input class="form-input" type="email" placeholder="marie@exemple.com">\par
+          </div>\par
+          <div class="form-group">\par
+            <label class="form-label">Num\'e9ro de carte</label>\par
+            <input class="form-input" type="text" placeholder="4242 4242 4242 4242" oninput="formatCard(this)">\par
+          </div>\par
+          <div class="form-row">\par
+            <div class="form-group">\par
+              <label class="form-label">Expiration</label>\par
+              <input class="form-input" type="text" placeholder="MM/AA" maxlength="5">\par
+            </div>\par
+            <div class="form-group">\par
+              <label class="form-label">CVV</label>\par
+              <input class="form-input" type="text" placeholder="123" maxlength="3">\par
+            </div>\par
+          </div>\par
+          <div class="summary-line"><span>Examen</span><span id="sum-price">39,00 CHF</span></div>\par
+          <div class="summary-line"><span>TVA (7.7%)</span><span id="sum-tva">3,00 CHF</span></div>\par
+          <div class="summary-line total"><span>Total</span><span id="sum-total">42,00 CHF</span></div>\par
+          <button class="btn-pay" onclick="processPayment()">\f3\u-10179?\u-8942?\f1  \f0 Payer et acc\'e9der \'e0 l'examen</button>\par
+        </div>\par
+      </div>\par
+    </div>\par
+  </div>\par
+</div>\par
+\par
+<!-- ==================== TEST ==================== -->\par
+<div id="screen-test" class="screen">\par
+  <nav>\par
+    <div class="logo">Test<span>Pro</span></div>\par
+    <div class="nav-links">\par
+      <a onclick="if(confirm('Quitter le test ?')) showScreen(\\'screen-home\\')">\f2\u10005?\f1  \f0 Quitter</a>\par
+    </div>\par
+  </nav>\par
+  <div class="test-layout" style="flex:1;">\par
+    <div class="test-sidebar">\par
+      <div style="color:rgba(255,255,255,0.5);font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1rem;" id="side-test-name">Test</div>\par
+      <div class="progress-wrap">\par
+        <div class="progress-label">\par
+          <span style="color:rgba(255,255,255,0.8);font-size:0.82rem;">Progression</span>\par
+          <span id="progress-txt" style="color:var(--gold);font-weight:600;">0 / 5</span>\par
+        </div>\par
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>\par
+      </div>\par
+      <div class="q-dots" id="q-dots"></div>\par
+      <div class="timer-wrap">\par
+        <div class="timer-label">Temps restant</div>\par
+        <div class="timer-val" id="timer">20:00</div>\par
+      </div>\par
+    </div>\par
+    <div class="test-main">\par
+      <div class="test-header">\par
+        <h1 class="test-title" id="test-title-main">Examen</h1>\par
+        <p class="test-sub">S\'e9lectionnez la meilleure r\'e9ponse pour chaque question</p>\par
+      </div>\par
+      <div id="question-area"></div>\par
+      <div class="nav-btns">\par
+        <button class="btn-nav" id="btn-prev" onclick="prevQ()" style="visibility:hidden;">\f5\u8592?\f1  \f0 Pr\'e9c\'e9dent</button>\par
+        <div style="font-size:0.82rem;color:var(--muted);" id="q-counter">Question 1 / 5</div>\par
+        <button class="btn-nav" id="btn-next" onclick="nextQ()">Suivant \f5\u8594?\f0 </button>\par
+      </div>\par
+    </div>\par
+  </div>\par
+</div>\par
+\par
+<!-- ==================== RESULTS ==================== -->\par
+<div id="screen-results" class="screen">\par
+  <nav>\par
+    <div class="logo">Test<span>Pro</span></div>\par
+    <div class="nav-links">\par
+      <a onclick="showScreen('screen-home')">Accueil</a>\par
+    </div>\par
+  </nav>\par
+  <div style="flex:1;background:var(--cream);">\par
+    <div class="results-wrap">\par
+      <div class="score-card">\par
+        <div style="position:relative;">\par
+          <div style="font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;">R\'e9sultat final</div>\par
+          <div class="score-pct" id="res-pct">80<span>%</span></div>\par
+          <div class="score-status" id="res-status">\f2\u9989?\f1  \f0 Examen r\'e9ussi</div>\par
+          <div class="score-msg" id="res-msg">F\'e9licitations ! Vous avez atteint le score requis.</div>\par
+          <div class="result-stats">\par
+            <div class="r-stat"><div class="r-stat-num" id="res-correct">4</div><div class="r-stat-label">Bonnes r\'e9ponses</div></div>\par
+            <div class="r-stat"><div class="r-stat-num" id="res-wrong">1</div><div class="r-stat-label">Mauvaises</div></div>\par
+            <div class="r-stat"><div class="r-stat-num" id="res-time">12:34</div><div class="r-stat-label">Temps utilis\'e9</div></div>\par
+          </div>\par
+        </div>\par
+      </div>\par
+      <div class="cert-promo" id="cert-promo">\par
+        <div class="cert-icon">\f3\u-10180?\u-8250?\f0 </div>\par
+        <div class="cert-text">\par
+          <h3>Obtenez votre certificat officiel</h3>\par
+          <p>Votre r\'e9ussite m\'e9rite d'\'eatre reconnue. T\'e9l\'e9chargez votre certificat personnel, partagez-le sur LinkedIn et faites valoir vos comp\'e9tences.</p>\par
+          <div class="cert-actions">\par
+            <button class="btn-cert" onclick="showCertificate()">\f3\u-10179?\u-8996?\f1  \f0 Voir mon certificat</button>\par
+            <button class="btn-outline" onclick="showScreen('screen-home')">Retour au catalogue</button>\par
+          </div>\par
+        </div>\par
+      </div>\par
+      <div class="answers-review">\par
+        <div class="review-title">Correction d\'e9taill\'e9e</div>\par
+        <div id="review-items"></div>\par
+      </div>\par
+    </div>\par
+  </div>\par
+</div>\par
+\par
+<!-- ==================== CERTIFICATE ==================== -->\par
+<div id="screen-cert" class="screen cert-screen">\par
+  <nav>\par
+    <div class="logo">Test<span>Pro</span></div>\par
+    <div class="nav-links">\par
+      <a onclick="showScreen('screen-results')">\f5\u8592?\f1  \f0 R\'e9sultats</a>\par
+      <a onclick="showScreen('screen-home')">Accueil</a>\par
+    </div>\par
+  </nav>\par
+  <div style="flex:1;">\par
+    <div class="cert-wrap">\par
+      <div class="cert-doc" id="cert-doc">\par
+        <div class="cert-logo">TESTPRO</div>\par
+        <div class="cert-logo-sub">Plateforme de Certification Professionnelle</div>\par
+        <div class="cert-divider"></div>\par
+        <div class="cert-headline">Certificat de R\'e9ussite</div>\par
+        <div class="cert-name" id="cert-name">Marie Dupont</div>\par
+        <div class="cert-body">a compl\'e9t\'e9 avec succ\'e8s et obtenu la certification</div>\par
+        <div class="cert-test" id="cert-test-name">JavaScript ES6+</div>\par
+        <div class="cert-body" style="font-size:0.82rem;">avec un score de</div>\par
+        <div class="cert-score-badge" id="cert-score">80%</div>\par
+        <div class="cert-body" style="margin-top:0.4rem;">\par
+          D\'e9livr\'e9 le <span id="cert-date" style="font-weight:600;color:var(--navy);">20 mars 2026</span>\par
+        </div>\par
+        <div class="cert-divider"></div>\par
+        <div class="cert-footer">\par
+          <div class="cert-sig">\par
+            <div class="cert-sig-name">Dr. Sophie Laurent</div>\par
+            <div class="cert-sig-title">Directrice des Certifications \f1\emdash  TestPro</div>\par
+          </div>\par
+          <div style="text-align:center;">\par
+            <div style="font-size:2rem;">\f3\u-10180?\u-8251?\f0 </div>\par
+            <div style="font-size:0.68rem;color:var(--muted);">Certification Officielle</div>\par
+          </div>\par
+          <div class="cert-id">\par
+            <div style="font-size:0.65rem;">ID: <span id="cert-id">TP-2026-<span style="font-weight:700;">48291</span></span></div>\par
+            <div style="font-size:0.65rem;margin-top:3px;">V\'e9rifiable sur testpro.ch/verify</div>\par
+          </div>\par
+        </div>\par
+      </div>\par
+      <div class="cert-actions-bar">\par
+        <button class="btn-cert" onclick="printCert()">\f4\u11015?\u-497?\f1  \f0 T\'e9l\'e9charger PDF</button>\par
+        <button class="btn-outline" onclick="shareCert()">\f3\u-10179?\u-8988?\f1  \f0 Partager LinkedIn</button>\par
+        <button class="btn-outline" onclick="showScreen('screen-home')">Retour au catalogue</button>\par
+      </div>\par
+    </div>\par
+  </div>\par
+</div>\par
+\par
+<!-- ==================== MODAL ==================== -->\par
+<div class="modal-overlay" id="modal">\par
+  <div class="modal">\par
+    <div class="modal-icon">\f2\u9989?\f0 </div>\par
+    <h3>Paiement confirm\'e9 !</h3>\par
+    <p>Votre paiement a bien \'e9t\'e9 trait\'e9. L'acc\'e8s \'e0 l'examen est maintenant actif. Bonne chance !</p>\par
+    <button class="btn-primary" onclick="closeModalAndStartTest()">Commencer l'examen \f5\u8594?\f0 </button>\par
+  </div>\par
+</div>\par
+\par
+<script>\par
+// ===== STATE =====\par
+let currentTest = \{ title: '', category: '', icon: '', price: 0 \};\par
+let currentQ = 0;\par
+let answers = [];\par
+let timerInterval = null;\par
+let timeLeft = 20 * 60;\par
+let timeUsed = 0;\par
+let userName = '';\par
+\par
+const QUESTIONS = [\par
+  \{\par
+    q: "Quelle est la diff\'e9rence principale entre `let` et `var` en JavaScript ?",\par
+    options: ["Aucune diff\'e9rence significative","let a une port\'e9e de bloc, var a une port\'e9e de fonction","var est plus r\'e9cent que let","let ne peut pas \'eatre r\'e9assign\'e9"],\par
+    correct: 1\par
+  \},\par
+  \{\par
+    q: "Qu'est-ce qu'une fonction fl\'e9ch\'e9e (arrow function) en ES6 ?",\par
+    options: ["Une fonction qui s'ex\'e9cute automatiquement","Une syntaxe raccourcie de fonction qui h\'e9rite du `this` du contexte parent","Une fonction qui retourne toujours un tableau","Une m\'e9thode propre aux tableaux"],\par
+    correct: 1\par
+  \},\par
+  \{\par
+    q: "Que permet l'op\'e9rateur spread (`...`) en JavaScript ?",\par
+    options: ["D\'e9clarer des variables globales","Cr\'e9er des fonctions r\'e9cursives","D\'e9composer un tableau ou objet it\'e9rable","Importer des modules externes"],\par
+    correct: 2\par
+  \},\par
+  \{\par
+    q: "Quelle m\'e9thode de Promise permet d'ex\'e9cuter du code apr\'e8s r\'e9solution OU rejet ?",\par
+    options: [".then()","catch()","finally()","resolve()"],\par
+    correct: 2\par
+  \},\par
+  \{\par
+    q: "Qu'est-ce que la d\'e9structuration (destructuring) en JavaScript ?",\par
+    options: ["Supprimer des propri\'e9t\'e9s d'un objet","Extraire des valeurs d'un tableau/objet dans des variables distinctes","Copier profond\'e9ment un objet","Convertir un objet en tableau"],\par
+    correct: 1\par
+  \}\par
+];\par
+\par
+// ===== NAVIGATION =====\par
+function showScreen(id) \{\par
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));\par
+  document.getElementById(id).classList.add('active');\par
+  window.scrollTo(0, 0);\par
+\}\par
+\par
+function scrollToCatalog() \{\par
+  document.getElementById('catalog').scrollIntoView(\{ behavior: 'smooth' \});\par
+\}\par
+\par
+function startDemo() \{\par
+  startTest('Culture G\'e9n\'e9rale', '\'c9valuation', '\f3\u-10180?\u-8301?\f0 ', 0);\par
+\}\par
+\par
+// ===== PAYMENT =====\par
+function startTest(title, category, icon, price) \{\par
+  currentTest = \{ title, category, icon, price \};\par
+  if (price === 0) \{\par
+    initTest();\par
+    showScreen('screen-test');\par
+  \} else \{\par
+    document.getElementById('pay-title').textContent = title;\par
+    document.getElementById('pay-cat').textContent = `$\{category\} \f1\bullet  5 questions \bullet  20 min`;\par
+    document.getElementById('pay-icon').textContent = icon;\par
+    document.getElementById('pay-price').textContent = `$\{price\} CHF`;\par
+    document.getElementById('sum-price').textContent = `$\{price.toFixed(2).replace('.', ',')\} CHF`;\par
+    const tva = (price * 0.077).toFixed(2).replace('.', ',');\par
+    const total = (price * 1.077).toFixed(2).replace('.', ',');\par
+    document.getElementById('sum-tva').textContent = `$\{tva\} CHF`;\par
+    document.getElementById('sum-total').textContent = `$\{total\} CHF`;\par
+    showScreen('screen-payment');\par
+  \}\par
+\}\par
+\par
+function formatCard(el) \{\par
+  let v = el.value.replace(/\\D/g, '').substring(0, 16);\par
+  el.value = v.replace(/(.\{4\})/g, '$1 ').trim();\par
+\}\par
+\par
+function processPayment() \{\par
+  const name = document.getElementById('pay-name').value.trim();\par
+  if (!name) \{ alert('Veuillez entrer votre nom complet.'); return; \}\par
+  userName = name;\par
+  document.getElementById('modal').classList.add('active');\par
+\}\par
+\par
+function closeModalAndStartTest() \{\par
+  document.getElementById('modal').classList.remove('active');\par
+  initTest();\par
+  showScreen('screen-test');\par
+\}\par
+\par
+// ===== TEST =====\par
+function initTest() \{\par
+  currentQ = 0;\par
+  answers = new Array(QUESTIONS.length).fill(null);\par
+  timeLeft = 20 * 60;\par
+  timeUsed = 0;\par
+  if (timerInterval) clearInterval(timerInterval);\par
+\par
+  document.getElementById('test-title-main').textContent = currentTest.title;\par
+  document.getElementById('side-test-name').textContent = currentTest.title;\par
+\par
+  buildDots();\par
+  renderQuestion();\par
+  startTimer();\par
+\}\par
+\par
+function buildDots() \{\par
+  const wrap = document.getElementById('q-dots');\par
+  wrap.innerHTML = '';\par
+  QUESTIONS.forEach((_, i) => \{\par
+    const d = document.createElement('div');\par
+    d.className = 'q-dot' + (i === 0 ? ' current' : '');\par
+    d.textContent = i + 1;\par
+    d.onclick = () => goToQ(i);\par
+    wrap.appendChild(d);\par
+  \});\par
+\}\par
+\par
+function updateDots() \{\par
+  const dots = document.querySelectorAll('.q-dot');\par
+  dots.forEach((d, i) => \{\par
+    d.className = 'q-dot';\par
+    if (answers[i] !== null) d.classList.add('answered');\par
+    if (i === currentQ) d.classList.add('current');\par
+  \});\par
+  const answered = answers.filter(a => a !== null).length;\par
+  document.getElementById('progress-txt').textContent = `$\{answered\} / $\{QUESTIONS.length\}`;\par
+  document.getElementById('progress-fill').style.width = `$\{(answered / QUESTIONS.length) * 100\}%`;\par
+  document.getElementById('q-counter').textContent = `Question $\{currentQ + 1\} / $\{QUESTIONS.length\}`;\par
+\}\par
+\par
+function renderQuestion() \{\par
+  const q = QUESTIONS[currentQ];\par
+  const area = document.getElementById('question-area');\par
+  const letters = ['A','B','C','D'];\par
+  area.innerHTML = `\par
+    <div class="question-card">\par
+      <div class="q-num">Question $\{currentQ + 1\} sur $\{QUESTIONS.length\}</div>\par
+      <div class="q-text">$\{q.q\}</div>\par
+      <div class="options">\par
+        $\{q.options.map((opt, i) => `\par
+          <div class="option $\{answers[currentQ] === i ? 'selected' : ''\}" onclick="selectOption($\{i\})">\par
+            <div class="option-letter">$\{letters[i]\}</div>\par
+            <span>$\{opt\}</span>\par
+          </div>\par
+        `).join('')\}\par
+      </div>\par
+    </div>`;\par
+\par
+  document.getElementById('btn-prev').style.visibility = currentQ === 0 ? 'hidden' : 'visible';\par
+\par
+  const isLast = currentQ === QUESTIONS.length - 1;\par
+  const btn = document.getElementById('btn-next');\par
+  btn.textContent = isLast ? 'Terminer l\\'examen \f2\u10003?\f0 ' : 'Suivant \f5\u8594?\f0 ';\par
+  btn.className = isLast ? 'btn-submit' : 'btn-nav';\par
+\par
+  updateDots();\par
+\}\par
+\par
+function selectOption(i) \{\par
+  answers[currentQ] = i;\par
+  renderQuestion();\par
+\}\par
+\par
+function nextQ() \{\par
+  if (currentQ === QUESTIONS.length - 1) \{\par
+    finishTest();\par
+  \} else \{\par
+    currentQ++;\par
+    renderQuestion();\par
+  \}\par
+\}\par
+\par
+function prevQ() \{ if (currentQ > 0) \{ currentQ--; renderQuestion(); \} \}\par
+function goToQ(i) \{ currentQ = i; renderQuestion(); \}\par
+\par
+function startTimer() \{\par
+  timerInterval = setInterval(() => \{\par
+    timeLeft--;\par
+    timeUsed++;\par
+    const m = Math.floor(timeLeft / 60);\par
+    const s = timeLeft % 60;\par
+    const el = document.getElementById('timer');\par
+    el.textContent = `$\{String(m).padStart(2,'0')\}:$\{String(s).padStart(2,'0')\}`;\par
+    el.className = 'timer-val' + (timeLeft < 120 ? ' warning' : '');\par
+    if (timeLeft <= 0) finishTest();\par
+  \}, 1000);\par
+\}\par
+\par
+function finishTest() \{\par
+  clearInterval(timerInterval);\par
+  const correct = answers.filter((a, i) => a === QUESTIONS[i].correct).length;\par
+  const total = QUESTIONS.length;\par
+  const pct = Math.round((correct / total) * 100);\par
+  const passed = pct >= 60;\par
+  const tm = Math.floor(timeUsed / 60);\par
+  const ts = timeUsed % 60;\par
+\par
+  document.getElementById('res-pct').innerHTML = `$\{pct\}<span>%</span>`;\par
+  document.getElementById('res-status').textContent = passed ? '\f2\u9989?\f1  \f0 Examen r\'e9ussi' : '\f2\u10060?\f1  \f0 Examen non valid\'e9';\par
+  document.getElementById('res-msg').textContent = passed\par
+    ? 'F\'e9licitations ! Vous avez atteint le seuil requis de 60%.'\par
+    : 'Score insuffisant. Le seuil de r\'e9ussite est fix\'e9 \'e0 60%. Vous pouvez repasser l\\'examen.';\par
+  document.getElementById('res-correct').textContent = correct;\par
+  document.getElementById('res-wrong').textContent = total - correct;\par
+  document.getElementById('res-time').textContent = `$\{String(tm).padStart(2,'0')\}:$\{String(ts).padStart(2,'0')\}`;\par
+\par
+  if (!passed) \{\par
+    document.getElementById('cert-promo').innerHTML = `\par
+      <div class="cert-icon">\f3\u-10179?\u-8998?\f0 </div>\par
+      <div class="cert-text">\par
+        <h3>R\'e9essayez pour obtenir votre certificat</h3>\par
+        <p>Vous n'avez pas atteint le seuil de 60% requis. R\'e9visez les points abord\'e9s et tentez \'e0 nouveau votre chance !</p>\par
+        <div class="cert-actions">\par
+          <button class="btn-cert" onclick="startTest('$\{currentTest.title\}','$\{currentTest.category\}','$\{currentTest.icon\}',$\{currentTest.price\})">\f3\u-10179?\u-8956?\f1  \f0 Repasser l'examen</button>\par
+          <button class="btn-outline" onclick="showScreen('screen-home')">Retour au catalogue</button>\par
+        </div>\par
+      </div>`;\par
+  \}\par
+\par
+  // Review\par
+  const reviewEl = document.getElementById('review-items');\par
+  reviewEl.innerHTML = QUESTIONS.map((q, i) => \{\par
+    const isCorrect = answers[i] === q.correct;\par
+    const userAns = answers[i] !== null ? q.options[answers[i]] : 'Non r\'e9pondu';\par
+    return `<div class="review-item">\par
+      <div class="review-icon">$\{isCorrect ? '\f2\u9989?\f0 ' : '\f2\u10060?\f0 '\}</div>\par
+      <div>\par
+        <div class="review-q">$\{q.q\}</div>\par
+        <div class="review-ans">Votre r\'e9ponse : <span class="$\{isCorrect ? 'correct-ans' : 'wrong-ans'\}">$\{userAns\}</span></div>\par
+        $\{!isCorrect ? `<div class="review-ans">Bonne r\'e9ponse : <span class="correct-ans">$\{q.options[q.correct]\}</span></div>` : ''\}\par
+      </div>\par
+    </div>`;\par
+  \}).join('');\par
+\par
+  showScreen('screen-results');\par
+\}\par
+\par
+// ===== CERTIFICATE =====\par
+function showCertificate() \{\par
+  const pct = document.getElementById('res-pct').textContent.replace('%','').replace(/[^0-9]/g,'');\par
+  const name = userName || 'Votre Nom';\par
+  document.getElementById('cert-name').textContent = name;\par
+  document.getElementById('cert-test-name').textContent = currentTest.title;\par
+  document.getElementById('cert-score').textContent = pct + '%';\par
+  document.getElementById('cert-id').innerHTML = `TP-2026-<span style="font-weight:700;">$\{Math.floor(10000 + Math.random()*90000)\}</span>`;\par
+  const now = new Date();\par
+  document.getElementById('cert-date').textContent = now.toLocaleDateString('fr-CH', \{ day: 'numeric', month: 'long', year: 'numeric' \});\par
+  showScreen('screen-cert');\par
+\}\par
+\par
+function printCert() \{\par
+  window.print();\par
+\}\par
+\par
+function shareCert() \{\par
+  alert('Fonctionnalit\'e9 LinkedIn : votre certificat serait partag\'e9 sur votre profil avec la description et le score obtenu.');\par
+\}\par
+</script>\par
+</body>\par
+</html>\lang12\par
+}
+ 
