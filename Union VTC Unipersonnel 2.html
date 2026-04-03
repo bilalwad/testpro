@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base de données — Participants</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f4f0; color: #1a1a18; min-height: 100vh; }
+  header { background: #fff; border-bottom: 1px solid #e2e0d8; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+  header h1 { font-size: 18px; font-weight: 500; }
+  header span { font-size: 13px; color: #888780; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1.5rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+  .stat { background: #fff; border-radius: 10px; border: 1px solid #e2e0d8; padding: 14px 18px; }
+  .stat-label { font-size: 12px; color: #888780; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .04em; }
+  .stat-val { font-size: 22px; font-weight: 500; }
+  .toolbar { display: flex; gap: 10px; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
+  .toolbar input, .toolbar select { flex: 1; min-width: 160px; border: 1px solid #d3d1c7; border-radius: 8px; padding: 8px 12px; font-size: 13px; background: #fff; color: #1a1a18; outline: none; }
+  .toolbar input:focus, .toolbar select:focus { border-color: #378add; box-shadow: 0 0 0 3px #e6f1fb; }
+  .btn-add { background: #e6f1fb; color: #185fa5; border: 1px solid #b5d4f4; border-radius: 8px; padding: 8px 18px; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+  .btn-add:hover { background: #b5d4f4; }
+  .table-wrap { background: #fff; border-radius: 12px; border: 1px solid #e2e0d8; overflow: hidden; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; min-width: 700px; }
+  th { text-align: left; padding: 10px 12px; font-size: 11px; font-weight: 500; color: #888780; border-bottom: 1px solid #e2e0d8; text-transform: uppercase; letter-spacing: .05em; background: #faf9f7; }
+  td { padding: 11px 12px; border-bottom: 1px solid #f1efe8; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #faf9f7; }
+  th.col-nom { width: 20%; } th.col-soc { width: 18%; } th.col-tel { width: 14%; }
+  th.col-mem { width: 8%; } th.col-cot { width: 13%; } th.col-stat { width: 11%; } th.col-act { width: 16%; }
+  .avatar { width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; flex-shrink: 0; }
+  .name-cell { display: flex; align-items: center; gap: 8px; }
+  .badge { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; }
+  .badge-actif { background: #eaf3de; color: #3b6d11; }
+  .badge-inactif { background: #f1efe8; color: #5f5e5a; }
+  .badge-retard { background: #faeeda; color: #854f0b; }
+  .cotis-ok { color: #3b6d11; font-weight: 500; }
+  .cotis-non { color: #993c1d; font-weight: 500; }
+  .actions { display: flex; gap: 6px; }
+  .btn-sm { background: none; border: 1px solid #d3d1c7; border-radius: 7px; padding: 4px 10px; font-size: 12px; cursor: pointer; color: #5f5e5a; }
+  .btn-sm:hover { background: #f1efe8; color: #1a1a18; }
+  .btn-del { border-color: #f0997b; color: #993c1d; }
+  .btn-del:hover { background: #faece7; }
+  .empty { text-align: center; padding: 2.5rem; color: #888780; font-size: 14px; }
+  /* Modal */
+  .modal-bg { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 100; align-items: center; justify-content: center; }
+  .modal-bg.open { display: flex; }
+  .modal { background: #fff; border-radius: 14px; border: 1px solid #e2e0d8; padding: 1.5rem; width: 100%; max-width: 440px; box-shadow: 0 8px 32px rgba(0,0,0,.12); }
+  .modal h2 { font-size: 16px; font-weight: 500; margin-bottom: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .form-row.full { grid-template-columns: 1fr; }
+  .form-row label { font-size: 12px; color: #888780; display: block; margin-bottom: 4px; }
+  .form-row input, .form-row select { width: 100%; border: 1px solid #d3d1c7; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #1a1a18; outline: none; }
+  .form-row input:focus, .form-row select:focus { border-color: #378add; box-shadow: 0 0 0 3px #e6f1fb; }
+  .form-btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 1.25rem; }
+  .btn-cancel { background: none; border: 1px solid #d3d1c7; border-radius: 8px; padding: 8px 16px; font-size: 13px; cursor: pointer; color: #5f5e5a; }
+  .btn-cancel:hover { background: #f1efe8; }
+  .btn-save { background: #185fa5; color: #fff; border: none; border-radius: 8px; padding: 8px 18px; font-size: 13px; font-weight: 500; cursor: pointer; }
+  .btn-save:hover { background: #0c447c; }
+  .export-bar { display: flex; justify-content: flex-end; margin-bottom: .75rem; }
+  .btn-export { background: #fff; border: 1px solid #d3d1c7; border-radius: 8px; padding: 7px 14px; font-size: 12px; cursor: pointer; color: #5f5e5a; }
+  .btn-export:hover { background: #f1efe8; }
+  @media print { header, .toolbar, .actions, .export-bar { display: none !important; } body { background: #fff; } .table-wrap { border: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Base de données — Participants</h1>
+  <span id="date-header"></span>
+</header>
+
+<div class="container">
+  <div class="stats" id="stats"></div>
+  <div class="toolbar">
+    <input type="text" id="search" placeholder="Rechercher nom, société…" />
+    <select id="filterStat">
+      <option value="">Tous les statuts</option>
+      <option value="Actif">Actif</option>
+      <option value="Inactif">Inactif</option>
+      <option value="En retard">En retard</option>
+    </select>
+    <select id="filterCotis">
+      <option value="">Toutes cotisations</option>
+      <option value="true">À jour</option>
+      <option value="false">Non réglée</option>
+    </select>
+    <button class="btn-add" onclick="openModal()">+ Ajouter participant</button>
+  </div>
+  <div class="export-bar">
+    <button class="btn-export" onclick="exportCSV()">⬇ Exporter CSV</button>
+    &nbsp;
+    <button class="btn-export" onclick="window.print()">🖨 Imprimer</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-nom">Nom</th>
+          <th class="col-soc">Société</th>
+          <th class="col-tel">Téléphone</th>
+          <th class="col-mem">Membres</th>
+          <th class="col-cot">Cotisation</th>
+          <th class="col-stat">Statut</th>
+          <th class="col-act">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div id="empty" class="empty" style="display:none;">Aucun participant trouvé.</div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <h2 id="modal-title">Nouveau participant</h2>
+    <div class="form-row">
+      <div><label>Prénom</label><input type="text" id="f-prenom" /></div>
+      <div><label>Nom</label><input type="text" id="f-nom" /></div>
+    </div>
+    <div class="form-row full">
+      <div><label>Société</label><input type="text" id="f-soc" /></div>
+    </div>
+    <div class="form-row">
+      <div><label>Téléphone</label><input type="text" id="f-tel" /></div>
+      <div><label>Nb membres</label><input type="number" id="f-mem" min="1" value="1" /></div>
+    </div>
+    <div class="form-row">
+      <div><label>Cotisation (CHF)</label><input type="number" id="f-montant" min="0" value="150" /></div>
+      <div><label>Statut</label>
+        <select id="f-stat">
+          <option>Actif</option>
+          <option>Inactif</option>
+          <option>En retard</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row full">
+      <div><label>Cotisation réglée</label>
+        <select id="f-cotis">
+          <option value="true">Oui — à jour</option>
+          <option value="false">Non — en attente</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-btns">
+      <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+      <button class="btn-save" onclick="saveParticipant()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('date-header').textContent = new Date().toLocaleDateString('fr-CH', {day:'2-digit',month:'long',year:'numeric'});
+
+const COLORS = ['#3266ad','#1D9E75','#D85A30','#7F77DD','#D4537E','#639922','#BA7517'];
+let participants = JSON.parse(localStorage.getItem('participants_db') || 'null') || [
+  {id:1,prenom:'Marie',nom:'Dupont',societe:'Fiduciaire Dupont SA',tel:'+41 22 310 45 67',membres:3,montant:250,statut:'Actif',cotis:true},
+  {id:2,prenom:'Jean-Luc',nom:'Martin',societe:'Martin & Associés',tel:'+41 79 456 78 90',membres:1,montant:150,statut:'Actif',cotis:true},
+  {id:3,prenom:'Sophie',nom:'Müller',societe:'Müller Consulting',tel:'+41 22 789 12 34',membres:5,montant:400,statut:'En retard',cotis:false},
+  {id:4,prenom:'Pierre',nom:'Favre',societe:'Favre Immobilier',tel:'+41 78 234 56 78',membres:2,montant:200,statut:'Actif',cotis:true},
+  {id:5,prenom:'Isabelle',nom:'Rochat',societe:'Cabinet Rochat',tel:'+41 22 543 21 09',membres:1,montant:150,statut:'Inactif',cotis:false},
+  {id:6,prenom:'Thomas',nom:'Bernard',societe:'Bernard Tech Sàrl',tel:'+41 79 876 54 32',membres:4,montant:350,statut:'Actif',cotis:true},
+  {id:7,prenom:'Nathalie',nom:'Girard',societe:'Atelier Girard',tel:'+41 22 111 22 33',membres:2,montant:200,statut:'En retard',cotis:false},
+];
+let nextId = Math.max(...participants.map(p=>p.id), 0) + 1;
+let editId = null;
+
+function save() { localStorage.setItem('participants_db', JSON.stringify(participants)); }
+
+function initials(p,n){ return ((p||'')[0]||'').toUpperCase()+((n||'')[0]||'').toUpperCase(); }
+function colorFor(i){ return COLORS[i % COLORS.length]; }
+
+function render(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const fs = document.getElementById('filterStat').value;
+  const fc = document.getElementById('filterCotis').value;
+  let list = participants.filter(p=>{
+    const txt = (p.prenom+' '+p.nom+' '+p.societe).toLowerCase();
+    if(q && !txt.includes(q)) return false;
+    if(fs && p.statut!==fs) return false;
+    if(fc!=='' && String(p.cotis)!==fc) return false;
+    return true;
+  });
+  const tbody = document.getElementById('tbody');
+  const empty = document.getElementById('empty');
+  if(!list.length){ tbody.innerHTML=''; empty.style.display='block'; }
+  else { empty.style.display='none'; }
+  tbody.innerHTML = list.map(p=>{
+    const idx = participants.indexOf(p);
+    const c = colorFor(idx);
+    const bc = p.statut==='Actif'?'badge-actif':p.statut==='En retard'?'badge-retard':'badge-inactif';
+    const cc = p.cotis?'cotis-ok':'cotis-non';
+    const cs = (p.cotis?'✓ ':'✗ ')+p.montant.toLocaleString()+' CHF';
+    return `<tr>
+      <td><div class="name-cell"><div class="avatar" style="background:${c}22;color:${c}">${initials(p.prenom,p.nom)}</div><span>${p.prenom} ${p.nom}</span></div></td>
+      <td title="${p.societe}">${p.societe}</td>
+      <td>${p.tel}</td>
+      <td style="text-align:center">${p.membres}</td>
+      <td class="${cc}">${cs}</td>
+      <td><span class="badge ${bc}">${p.statut}</span></td>
+      <td><div class="actions"><button class="btn-sm" onclick="editParticipant(${p.id})">Modifier</button><button class="btn-sm btn-del" onclick="delParticipant(${p.id})">Supprimer</button></div></td>
+    </tr>`;
+  }).join('');
+
+  const total = participants.length;
+  const actifs = participants.filter(p=>p.statut==='Actif').length;
+  const totalCotis = participants.filter(p=>p.cotis).reduce((s,p)=>s+p.montant,0);
+  const totalMem = participants.reduce((s,p)=>s+p.membres,0);
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="stat-label">Participants</div><div class="stat-val">${total}</div></div>
+    <div class="stat"><div class="stat-label">Actifs</div><div class="stat-val">${actifs}</div></div>
+    <div class="stat"><div class="stat-label">Total membres</div><div class="stat-val">${totalMem}</div></div>
+    <div class="stat"><div class="stat-label">Cotisations réglées</div><div class="stat-val">${totalCotis.toLocaleString()} CHF</div></div>
+  `;
+}
+
+function openModal(id=null){
+  editId = id;
+  document.getElementById('modal-title').textContent = id?'Modifier participant':'Nouveau participant';
+  if(id){
+    const p = participants.find(x=>x.id===id);
+    document.getElementById('f-prenom').value=p.prenom;
+    document.getElementById('f-nom').value=p.nom;
+    document.getElementById('f-soc').value=p.societe;
+    document.getElementById('f-tel').value=p.tel;
+    document.getElementById('f-mem').value=p.membres;
+    document.getElementById('f-montant').value=p.montant;
+    document.getElementById('f-stat').value=p.statut;
+    document.getElementById('f-cotis').value=String(p.cotis);
+  } else {
+    ['f-prenom','f-nom','f-soc','f-tel'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('f-mem').value='1';
+    document.getElementById('f-montant').value='150';
+    document.getElementById('f-stat').value='Actif';
+    document.getElementById('f-cotis').value='true';
+  }
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+function editParticipant(id){ openModal(id); }
+function delParticipant(id){
+  if(confirm('Supprimer ce participant ?')){ participants=participants.filter(p=>p.id!==id); save(); render(); }
+}
+function saveParticipant(){
+  const prenom=document.getElementById('f-prenom').value.trim();
+  const nom=document.getElementById('f-nom').value.trim();
+  if(!prenom||!nom){ alert('Prénom et nom requis.'); return; }
+  const data = {
+    prenom,nom,
+    societe:document.getElementById('f-soc').value.trim()||'—',
+    tel:document.getElementById('f-tel').value.trim()||'—',
+    membres:parseInt(document.getElementById('f-mem').value)||1,
+    montant:parseInt(document.getElementById('f-montant').value)||0,
+    statut:document.getElementById('f-stat').value,
+    cotis:document.getElementById('f-cotis').value==='true'
+  };
+  if(editId){ const idx=participants.findIndex(p=>p.id===editId); participants[idx]={...participants[idx],...data}; }
+  else { participants.push({id:nextId++,...data}); }
+  save(); closeModal(); render();
+}
+
+function exportCSV(){
+  const header = ['Prénom','Nom','Société','Téléphone','Membres','Cotisation CHF','Réglée','Statut'];
+  const rows = participants.map(p=>[p.prenom,p.nom,p.societe,p.tel,p.membres,p.montant,p.cotis?'Oui':'Non',p.statut]);
+  const csv = [header,...rows].map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\n');
+  const blob = new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='participants.csv'; a.click();
+}
+
+document.getElementById('search').addEventListener('input',render);
+document.getElementById('filterStat').addEventListener('change',render);
+document.getElementById('filterCotis').addEventListener('change',render);
+document.getElementById('modal').addEventListener('click',e=>{ if(e.target===document.getElementById('modal')) closeModal(); });
+render();
+</script>
+</body>
+</html>
